@@ -1,0 +1,15 @@
+
+name: YouTube Auto Upload
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start
+        run: echo "YouTube automation workflow started"
+        
