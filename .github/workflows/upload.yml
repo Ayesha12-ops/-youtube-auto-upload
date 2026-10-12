@@ -23,3 +23,27 @@ jobs:
       - name: Check automation
         run: |
           python -c "print('YouTube automation is ready for the next setup step')"
+name: YouTube Auto Upload
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project files
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run automation
+        run: python main.py
